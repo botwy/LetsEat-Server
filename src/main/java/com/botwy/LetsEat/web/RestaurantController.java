@@ -1,7 +1,7 @@
 package com.botwy.LetsEat.web;
 
 import com.botwy.LetsEat.services.api.RestaurantService;
-import com.botwy.LetsEat.services.dto.RestaurantDTO;
+import com.botwy.LetsEat.model.dto.RestaurantDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

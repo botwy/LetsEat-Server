@@ -1,7 +1,7 @@
 package com.botwy.LetsEat.services.mappers;
 
-import com.botwy.LetsEat.services.dto.RestaurantDTO;
-import com.botwy.LetsEat.services.dto.RestaurantStub;
+import com.botwy.LetsEat.model.dto.RestaurantDTO;
+import com.botwy.LetsEat.model.dto.RestaurantStub;
 
 public class RestaurantMapper {
     public RestaurantDTO fromStub(RestaurantStub restaurantStub) {

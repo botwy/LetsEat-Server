@@ -1,7 +1,7 @@
 package com.botwy.services.impl;
 
 import com.botwy.LetsEat.services.api.RestaurantService;
-import com.botwy.LetsEat.services.dto.RestaurantDTO;
+import com.botwy.LetsEat.model.dto.RestaurantDTO;
 import com.botwy.LetsEat.services.impl.RestaurantServiceImpl;
 
 import org.junit.jupiter.api.BeforeEach;

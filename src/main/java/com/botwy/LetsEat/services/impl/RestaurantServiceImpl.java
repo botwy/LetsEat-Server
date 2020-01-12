@@ -1,10 +1,13 @@
 package com.botwy.LetsEat.services.impl;
 
+import com.botwy.LetsEat.dao.api.RestaurantDAO;
+import com.botwy.LetsEat.model.entity.Restaurant;
 import com.botwy.LetsEat.services.api.RestaurantService;
-import com.botwy.LetsEat.services.dto.RestaurantDTO;
-import com.botwy.LetsEat.services.dto.RestaurantStub;
+import com.botwy.LetsEat.model.dto.RestaurantDTO;
+import com.botwy.LetsEat.model.dto.RestaurantStub;
 import com.botwy.LetsEat.services.mappers.RestaurantMapper;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -14,6 +17,10 @@ import java.util.Collections;
 
 @Service
 public class RestaurantServiceImpl implements RestaurantService {
+
+    @Autowired
+    RestaurantDAO restaurantDAO;
+
     @Override
     public RestaurantDTO[] getAll() {
         URL pathAspen = getClass().getResource("/Aspen.json");
