@@ -1,7 +1,7 @@
 package com.botwy.LetsEat.services.impl;
 
-import com.botwy.LetsEat.dao.api.RestaurantDAO;
-import com.botwy.LetsEat.model.entity.Restaurant;
+//import com.botwy.LetsEat.dao.api.RestaurantDAO;
+//import com.botwy.LetsEat.model.entity.Restaurant;
 import com.botwy.LetsEat.services.api.RestaurantService;
 import com.botwy.LetsEat.model.dto.RestaurantDTO;
 import com.botwy.LetsEat.model.dto.RestaurantStub;
@@ -18,8 +18,8 @@ import java.util.Collections;
 @Service
 public class RestaurantServiceImpl implements RestaurantService {
 
-    @Autowired
-    RestaurantDAO restaurantDAO;
+//    @Autowired
+//    RestaurantDAO restaurantDAO;
 
     @Override
     public RestaurantDTO[] getAll() {
