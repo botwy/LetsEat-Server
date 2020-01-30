@@ -1,9 +1,11 @@
 package com.botwy.LetsEat.services.api;
 
+import com.botwy.LetsEat.entity.Restaurant;
 import com.botwy.LetsEat.model.dto.RestaurantDTO;
 
-public interface RestaurantService {
-    RestaurantDTO[] getAll();
-    RestaurantDTO getDetail(int id);
+import java.util.List;
 
+public interface RestaurantService {
+    List<Restaurant> getAll();
+    Restaurant getDetail(int id);
 }

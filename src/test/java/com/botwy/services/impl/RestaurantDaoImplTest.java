@@ -1,40 +1,34 @@
 package com.botwy.services.impl;
 
 import com.botwy.LetsEat.Application;
+import com.botwy.LetsEat.dao.api.RestaurantDAO;
+import com.botwy.LetsEat.dao.impl.RestaurantDAOImpl;
 import com.botwy.LetsEat.entity.Restaurant;
 import com.botwy.LetsEat.services.api.RestaurantService;
-import com.botwy.LetsEat.model.dto.RestaurantDTO;
-import com.botwy.LetsEat.services.impl.RestaurantServiceImpl;
-
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.jupiter.api.extension.Extensions;
-import org.junit.jupiter.api.parallel.Execution;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
-import javax.swing.*;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = Application.class)
-public class RestaurantServiceImplTest {
+public class RestaurantDaoImplTest {
 
-    private RestaurantService restaurantService;
+    private RestaurantDAOImpl restaurantDAO;
 
     @Autowired
-    public RestaurantServiceImplTest(RestaurantService restaurantService) {
-        this.restaurantService = restaurantService;
+    public RestaurantDaoImplTest(RestaurantDAOImpl restaurantDAO) {
+        this.restaurantDAO = restaurantDAO;
     }
 
     @Test
     public void getAllRestaurant() {
-        List<Restaurant> restaurants = restaurantService.getAll();
+        List<Restaurant> restaurants = restaurantDAO.getAll();
         assertEquals(restaurants.size(), 67);
     }
 }
