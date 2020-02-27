@@ -12,7 +12,6 @@ import java.util.UUID;
 
 @Data
 @Entity
-@Table(schema = "TESTDB")
 public class Restaurant {
     @Id
     private UUID id;
