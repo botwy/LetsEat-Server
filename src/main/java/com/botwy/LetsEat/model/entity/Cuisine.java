@@ -9,7 +9,7 @@ import javax.persistence.Id;
 @Entity
 public class Cuisine {
     @Id
-    private long UUID;
+    private Long id;
 
     private String name;
 }

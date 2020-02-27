@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
@@ -14,7 +15,7 @@ import java.util.UUID;
 @Entity
 public class Restaurant {
     @Id
-    private UUID id;
+    private Long id;
 
     private String name;
 
@@ -33,7 +34,7 @@ public class Restaurant {
     private String imageURL;
 
     @OneToMany
-    private List<Cuisine> cuisines;
+    private Collection<Cuisine> cuisines;
 
     private int starNumber;
 }
