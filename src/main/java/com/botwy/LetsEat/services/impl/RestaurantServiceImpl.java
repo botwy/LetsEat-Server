@@ -13,7 +13,9 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 @Service
 public class RestaurantServiceImpl implements RestaurantService {
@@ -22,27 +24,15 @@ public class RestaurantServiceImpl implements RestaurantService {
     RestaurantDAO restaurantDAO;
 
     @Override
-    public RestaurantDTO[] getAll() {
-        URL pathAspen = getClass().getResource("/Aspen.json");
-        URL pathBoston = getClass().getResource("/Boston.json");
-        URL pathCharleston = getClass().getResource("/Charleston.json");
-        ObjectMapper mapper = new ObjectMapper();
-        ArrayList<RestaurantStub> restaurantStubs = new ArrayList<>();
-        try {
-            Collections.addAll(restaurantStubs, mapper.readValue(pathAspen, RestaurantStub[].class));
-            Collections.addAll(restaurantStubs, mapper.readValue(pathBoston, RestaurantStub[].class));
-            Collections.addAll(restaurantStubs, mapper.readValue(pathCharleston, RestaurantStub[].class));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public Collection<Restaurant> getAll() {
+        List<Restaurant> restaurantList = new ArrayList<>();
+        restaurantDAO.findAll().forEach(restaurantList::add);
+        return restaurantList;
+    }
 
-        RestaurantDTO[] restaurantDTOs = new RestaurantDTO[restaurantStubs.size()];
-        RestaurantMapper restaurantMapper = new RestaurantMapper();
-        for (int i = 0; i < restaurantDTOs.length; i++) {
-            restaurantDTOs[i] = restaurantMapper.fromStub(restaurantStubs.get(i));
-        }
-
-        return restaurantDTOs;
+    @Override
+    public Restaurant create(Restaurant restaurant) {
+        return restaurantDAO.save(restaurant);
     }
 
     @Override

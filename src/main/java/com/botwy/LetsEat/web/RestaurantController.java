@@ -1,11 +1,12 @@
 package com.botwy.LetsEat.web;
 
+import com.botwy.LetsEat.model.entity.Restaurant;
 import com.botwy.LetsEat.services.api.RestaurantService;
 import com.botwy.LetsEat.model.dto.RestaurantDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Collection;
 
 @RestController
 public class RestaurantController {
@@ -18,8 +19,13 @@ public class RestaurantController {
     }
 
     @RequestMapping("/restaurants")
-    public RestaurantDTO[] restaurants() {
+    public Collection<Restaurant> restaurants() {
         return restaurantService.getAll();
+    }
+
+    @RequestMapping(value = "/restaurants/create", method = RequestMethod.POST)
+    public Restaurant restaurants(@RequestBody Restaurant restaurant) {
+        return restaurantService.create(restaurant);
     }
 
     @RequestMapping("/restaurants/{id}")
