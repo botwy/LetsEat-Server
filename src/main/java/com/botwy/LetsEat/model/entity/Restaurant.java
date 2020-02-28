@@ -30,8 +30,11 @@ public class Restaurant {
 
     private String imageURL;
 
-    @OneToMany
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "restaurant_cuisines",
+            joinColumns = @JoinColumn(name = "restaurant_id"),
+            inverseJoinColumns = @JoinColumn(name = "cuisine_id")
+    )
     private Collection<Cuisine> cuisines;
-
-    private int starNumber;
 }

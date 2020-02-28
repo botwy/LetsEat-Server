@@ -1,10 +1,10 @@
 package com.botwy.LetsEat.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 
 @Data
 @Entity
@@ -15,4 +15,8 @@ public class Cuisine {
 
     private String code;
     private String value;
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "cuisines")
+    private Collection<Restaurant> restaurants;
 }
