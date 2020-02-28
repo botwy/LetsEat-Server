@@ -37,4 +37,7 @@ public class Restaurant {
             inverseJoinColumns = @JoinColumn(name = "cuisine_id")
     )
     private Collection<Cuisine> cuisines;
+
+    @OneToMany(mappedBy = "restaurant")
+    private Collection<Review> reviews;
 }

@@ -2,6 +2,7 @@ package com.botwy.LetsEat.services.impl;
 
 import com.botwy.LetsEat.dao.api.RestaurantDAO;
 import com.botwy.LetsEat.model.entity.Restaurant;
+import com.botwy.LetsEat.model.entity.Review;
 import com.botwy.LetsEat.services.api.RestaurantService;
 import com.botwy.LetsEat.model.dto.RestaurantDTO;
 import com.botwy.LetsEat.model.dto.RestaurantStub;
@@ -28,6 +29,16 @@ public class RestaurantServiceImpl implements RestaurantService {
     @Override
     public Restaurant create(Restaurant restaurant) {
         return restaurantDAO.create(restaurant);
+    }
+
+    @Override
+    public Restaurant get(Long id) {
+        return restaurantDAO.restaurantBy(id);
+    }
+
+    @Override
+    public Restaurant addReviewToRestaurantWithId(Review review, Long id) {
+        return restaurantDAO.addReviewToRestaurantWithId(review, id);
     }
 
     @Override

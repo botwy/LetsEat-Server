@@ -1,6 +1,7 @@
 package com.botwy.LetsEat.web;
 
 import com.botwy.LetsEat.model.entity.Restaurant;
+import com.botwy.LetsEat.model.entity.Review;
 import com.botwy.LetsEat.services.api.RestaurantService;
 import com.botwy.LetsEat.model.dto.RestaurantDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,11 @@ public class RestaurantController {
     @RequestMapping(value = "/restaurants/create", method = RequestMethod.POST)
     public Restaurant restaurants(@RequestBody Restaurant restaurant) {
         return restaurantService.create(restaurant);
+    }
+
+    @RequestMapping(value = "/restaurants/{id}/addReview", method = RequestMethod.POST)
+    public Restaurant addReview(@PathVariable("id") Long restaurantId, @RequestBody Review review) {
+        return restaurantService.addReviewToRestaurantWithId(review, restaurantId);
     }
 
     @RequestMapping("/restaurants/{id}")
