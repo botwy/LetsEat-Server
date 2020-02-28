@@ -9,6 +9,10 @@ import java.util.Date;
 @Data
 @Entity
 public class Review {
+    @Id
+    @GeneratedValue
+    private Long id;
+
     private String title;
     private String name;
     private String customerReview;
