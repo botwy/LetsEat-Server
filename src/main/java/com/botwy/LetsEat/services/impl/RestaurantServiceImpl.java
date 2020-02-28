@@ -12,10 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
 
 @Service
 public class RestaurantServiceImpl implements RestaurantService {
@@ -25,14 +22,12 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     @Override
     public Collection<Restaurant> getAll() {
-        List<Restaurant> restaurantList = new ArrayList<>();
-        restaurantDAO.findAll().forEach(restaurantList::add);
-        return restaurantList;
+        return restaurantDAO.getAll();
     }
 
     @Override
     public Restaurant create(Restaurant restaurant) {
-        return restaurantDAO.save(restaurant);
+        return restaurantDAO.create(restaurant);
     }
 
     @Override

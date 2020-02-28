@@ -1,12 +1,8 @@
 package com.botwy.LetsEat.model.entity;
 
 import lombok.Data;
-import lombok.NonNull;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
@@ -15,6 +11,7 @@ import java.util.UUID;
 @Entity
 public class Restaurant {
     @Id
+    @GeneratedValue
     private Long id;
 
     private String name;
