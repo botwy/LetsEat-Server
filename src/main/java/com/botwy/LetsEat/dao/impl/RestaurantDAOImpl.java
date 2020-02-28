@@ -7,10 +7,7 @@ import com.botwy.LetsEat.repository.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Component
 public class RestaurantDAOImpl implements RestaurantDAO {
@@ -42,10 +39,12 @@ public class RestaurantDAOImpl implements RestaurantDAO {
     @Override
     public Restaurant addReviewToRestaurantWithId(Review review, Long id) {
         Restaurant restaurant = this.restaurantBy(id);
-        if (restaurant.getReviews() == null) {
-            restaurant.setReviews(new ArrayList<>());
+        Collection<Review> reviews = restaurant.getReviews();
+        if (reviews == null) {
+            reviews = new ArrayList<>();
         }
-        restaurant.getReviews().add(review);
+        reviews.add(review);
+        restaurant.setReviews(reviews);
 
         return restaurantRepository.save(restaurant);
     }
