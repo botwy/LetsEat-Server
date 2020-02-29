@@ -31,18 +31,12 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     @Override
     public Restaurant create(Restaurant restaurant) {
-        Restaurant newRestaurant = restaurantDAO.create(restaurant);
-        System.out.println("restaurant.getReviews()");
-        System.out.println(newRestaurant.getReviews());
-        return newRestaurant;
+        return restaurantDAO.create(restaurant);
     }
 
     @Override
     public Restaurant get(Long id) {
-        Restaurant restaurant = restaurantDAO.restaurantBy(id);
-        System.out.println("restaurant.getReviews()");
-        System.out.println(restaurant.getReviews());
-        return restaurant;
+        return restaurantDAO.restaurantBy(id);
     }
 
     @Override
