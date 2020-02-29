@@ -38,6 +38,7 @@ public class Restaurant {
     )
     private Collection<Cuisine> cuisines;
 
-    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "restaurant_id")
     private Collection<Review> reviews;
 }

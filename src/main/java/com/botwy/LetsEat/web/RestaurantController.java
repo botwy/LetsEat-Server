@@ -26,7 +26,8 @@ public class RestaurantController {
 
     @RequestMapping(value = "/restaurants/create", method = RequestMethod.POST)
     public Restaurant restaurants(@RequestBody Restaurant restaurant) {
-        return restaurantService.create(restaurant);
+        Long id = restaurantService.create(restaurant).getId();
+        return restaurantService.get(id);
     }
 
     @RequestMapping(value = "/restaurants/{id}/addReview", method = RequestMethod.POST)
@@ -35,7 +36,12 @@ public class RestaurantController {
     }
 
     @RequestMapping("/restaurants/{id}")
-    public RestaurantDTO restaurantDetail(@PathVariable("id") int restaurantId) {
-        return restaurantService.getDetail(restaurantId);
+    public Restaurant restaurantDetail(@PathVariable("id") String restaurantId) {
+        return restaurantService.get(Long.parseLong(restaurantId, 10));
+    }
+
+    @RequestMapping("/restaurants/update")
+    public Restaurant restaurantUpdate(@RequestBody Restaurant restaurant) {
+        return restaurantService.update(restaurant);
     }
 }

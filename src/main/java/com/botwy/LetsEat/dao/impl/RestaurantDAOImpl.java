@@ -37,15 +37,10 @@ public class RestaurantDAOImpl implements RestaurantDAO {
     }
 
     @Override
-    public Restaurant addReviewToRestaurantWithId(Review review, Long id) {
-        Restaurant restaurant = this.restaurantBy(id);
-        Collection<Review> reviews = restaurant.getReviews();
-        if (reviews == null) {
-            reviews = new ArrayList<>();
+    public Restaurant update(Restaurant restaurant) {
+        if (restaurant.getId() == null) {
+            throw new RuntimeException("Missing id in restaurant with name " + restaurant.getName());
         }
-        reviews.add(review);
-        restaurant.setReviews(reviews);
-
         return restaurantRepository.save(restaurant);
     }
 }

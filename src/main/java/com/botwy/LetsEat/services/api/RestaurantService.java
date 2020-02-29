@@ -11,6 +11,6 @@ public interface RestaurantService {
     Restaurant create(Restaurant restaurant);
     Restaurant get(Long id);
     Restaurant addReviewToRestaurantWithId(Review review, Long id);
-    RestaurantDTO getDetail(int id);
-
+    Restaurant update(Restaurant restaurant);
+    RestaurantDTO getDetail(Long id);
 }

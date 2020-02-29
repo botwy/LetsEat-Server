@@ -9,5 +9,5 @@ public interface RestaurantDAO {
     Collection<Restaurant> getAll();
     Restaurant create(Restaurant restaurant);
     Restaurant restaurantBy(Long id);
-    Restaurant addReviewToRestaurantWithId(Review review, Long id);
+    Restaurant update(Restaurant restaurant);
 }

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Collection;
 
 @Service
@@ -23,26 +24,47 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     @Override
     public Collection<Restaurant> getAll() {
-        return restaurantDAO.getAll();
+        Collection<Restaurant> restaurants = restaurantDAO.getAll();
+        restaurants.forEach(restaurant -> System.out.println(restaurant.getReviews()));
+        return restaurants;
     }
 
     @Override
     public Restaurant create(Restaurant restaurant) {
-        return restaurantDAO.create(restaurant);
+        Restaurant newRestaurant = restaurantDAO.create(restaurant);
+        System.out.println("restaurant.getReviews()");
+        System.out.println(newRestaurant.getReviews());
+        return newRestaurant;
     }
 
     @Override
     public Restaurant get(Long id) {
-        return restaurantDAO.restaurantBy(id);
+        Restaurant restaurant = restaurantDAO.restaurantBy(id);
+        System.out.println("restaurant.getReviews()");
+        System.out.println(restaurant.getReviews());
+        return restaurant;
     }
 
     @Override
     public Restaurant addReviewToRestaurantWithId(Review review, Long id) {
-        return restaurantDAO.addReviewToRestaurantWithId(review, id);
+        Restaurant restaurant = restaurantDAO.restaurantBy(id);
+        Collection<Review> reviews = restaurant.getReviews();
+        if (reviews == null) {
+            reviews = new ArrayList<>();
+            restaurant.setReviews(reviews);
+        }
+        reviews.add(review);
+
+        return restaurantDAO.update(restaurant);
     }
 
     @Override
-    public RestaurantDTO getDetail(int restaurantId) {
+    public Restaurant update(Restaurant restaurant) {
+        return restaurantDAO.update(restaurant);
+    }
+
+    @Override
+    public RestaurantDTO getDetail(Long restaurantId) {
         URL pathDetail = getClass().getResource("/" + restaurantId + "_Detail.json");
         if (pathDetail == null) {
             throw new RuntimeException("Missing detail for id=" + restaurantId);
