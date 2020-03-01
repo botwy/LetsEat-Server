@@ -3,6 +3,7 @@ package com.botwy.LetsEat.model.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
@@ -40,5 +41,5 @@ public class Restaurant {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "restaurant_id")
-    private Collection<Review> reviews;
+    private Collection<Review> reviews = new ArrayList<>();
 }

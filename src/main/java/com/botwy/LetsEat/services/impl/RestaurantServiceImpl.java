@@ -43,10 +43,6 @@ public class RestaurantServiceImpl implements RestaurantService {
     public Restaurant addReviewToRestaurantWithId(Review review, Long id) {
         Restaurant restaurant = restaurantDAO.restaurantBy(id);
         Collection<Review> reviews = restaurant.getReviews();
-        if (reviews == null) {
-            reviews = new ArrayList<>();
-            restaurant.setReviews(reviews);
-        }
         reviews.add(review);
 
         return restaurantDAO.update(restaurant);
